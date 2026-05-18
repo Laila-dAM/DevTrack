@@ -13,3 +13,8 @@ export async function moveTask(taskId, columnId) {
 
   return response.data
 }
+
+export async function createTask(data) {
+  const response = await api.post('/tasks', data)
+  return response.data
+}
