@@ -7,7 +7,7 @@ import {
   moveTask
 } from '../../services/api/tasks'
 
-export default function KanbanBoard() {
+export default function KanbanBoard({ project }) {
   const [columns, setColumns] = useState([])
   const [openModal, setOpenModal] = useState(false)
 
