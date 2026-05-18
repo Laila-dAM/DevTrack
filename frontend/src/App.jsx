@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 
 import Layout from './components/layout/Layout'
 import KanbanBoard from './components/kanban/KanbanBoard'
+import AnalyticsDashboard from './components/analytics/AnalyticsDashboard'
+
 import ProjectSidebar from './components/projects/ProjectSidebar'
 import CreateProjectModal from './components/modals/CreateProjectModal'
 
@@ -40,7 +42,9 @@ export default function App() {
           openModal={() => setOpenModal(true)}
         />
 
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col gap-8">
+          <AnalyticsDashboard />
+
           {selectedProject && (
             <KanbanBoard project={selectedProject} />
           )}
