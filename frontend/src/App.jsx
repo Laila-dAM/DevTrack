@@ -1,39 +1,20 @@
 import Layout from './components/layout/Layout'
+import KanbanBoard from './components/kanban/KanbanBoard'
 
 export default function App() {
   return (
     <Layout>
-      <div className="grid grid-cols-3 gap-6">
-        <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-          <h3 className="text-xl font-bold mb-2">
-            Projects
-          </h3>
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold text-white">
+          Project Kanban
+        </h1>
 
-          <p className="text-slate-400">
-            12 Active Projects
-          </p>
-        </div>
-
-        <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-          <h3 className="text-xl font-bold mb-2">
-            Tasks
-          </h3>
-
-          <p className="text-slate-400">
-            84 Total Tasks
-          </p>
-        </div>
-
-        <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-          <h3 className="text-xl font-bold mb-2">
-            Team
-          </h3>
-
-          <p className="text-slate-400">
-            8 Members
-          </p>
-        </div>
+        <p className="text-slate-400 mt-2">
+          Manage your tasks and workflow
+        </p>
       </div>
+
+      <KanbanBoard />
     </Layout>
   )
 }
