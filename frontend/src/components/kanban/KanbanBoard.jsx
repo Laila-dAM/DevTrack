@@ -1,54 +1,42 @@
+import { useEffect, useState } from 'react'
 import KanbanColumn from './KanbanColumn'
+import {
+  getKanban,
+  moveTask
+} from '../../services/api/tasks'
 
 export default function KanbanBoard() {
-  const columns = [
-    {
-      id: 1,
-      title: 'To Do',
-      tasks: [
-        {
-          id: 1,
-          title: 'Create dashboard',
-          description: 'Build analytics UI'
-        },
-        {
-          id: 2,
-          title: 'Fix login',
-          description: 'Improve auth flow'
-        }
-      ]
-    },
-    {
-      id: 2,
-      title: 'In Progress',
-      tasks: [
-        {
-          id: 3,
-          title: 'Kanban system',
-          description: 'Implement drag and drop'
-        }
-      ]
-    },
-    {
-      id: 3,
-      title: 'Done',
-      tasks: [
-        {
-          id: 4,
-          title: 'Backend API',
-          description: 'FastAPI setup completed'
-        }
-      ]
+  const [columns, setColumns] = useState([])
+
+  async function loadKanban() {
+    try {
+      const data = await getKanban(1)
+      setColumns(data)
+    } catch {
+      console.log('Failed to load kanban')
     }
-  ]
+  }
+
+  async function handleMoveTask(taskId, columnId) {
+    try {
+      await moveTask(taskId, columnId)
+      loadKanban()
+    } catch {
+      console.log('Failed to move task')
+    }
+  }
+
+  useEffect(() => {
+    loadKanban()
+  }, [])
 
   return (
     <div className="flex gap-6 overflow-x-auto pb-4">
       {columns.map((column) => (
         <KanbanColumn
           key={column.id}
-          title={column.title}
-          tasks={column.tasks}
+          column={column}
+          onMoveTask={handleMoveTask}
         />
       ))}
     </div>

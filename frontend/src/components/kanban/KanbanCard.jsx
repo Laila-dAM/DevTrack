@@ -1,6 +1,6 @@
 export default function KanbanCard({ task }) {
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-2xl p-4 cursor-pointer hover:border-blue-500 transition">
+    <div className="bg-slate-800 border border-slate-700 rounded-2xl p-4 hover:border-blue-500 transition">
       <h3 className="font-semibold text-white">
         {task.title}
       </h3>
